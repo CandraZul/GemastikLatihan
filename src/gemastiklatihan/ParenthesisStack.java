@@ -12,28 +12,28 @@ import java.util.Stack;
  */
 public class ParenthesisStack {
     class Solution {
-    public boolean isValid(String s) {
-     Stack<Character> stack = new Stack<>();
+        public boolean isValid(String s) {
+            Stack<Character> stack = new Stack<>();
 
-     for (int i=0;i<s.length();i++){
-         Character x = s.charAt(i);
-         if (x=='(' || x=='{' || x=='['){
-             stack.push(x);
-         }else if(x==')'||x=='}'||x==']'){ 
-             if(stack.isEmpty()){
-                 return false;
-             }else if(stack.peek()=='(' && x!=')'){
-                 return false;
-             }else if(stack.peek()=='[' && x!=']'){
-                 return false;
-            }else if(stack.peek()=='{' && x!='}'){
-                 return false;
-            }else{
-                stack.pop();
-            }       
-     }
+            for (int i=0;i<s.length();i++){
+                Character x = s.charAt(i);
+                if (x=='(' || x=='{' || x=='['){
+                    stack.push(x);
+                }else{ 
+                    if(stack.isEmpty()){
+                        return false;
+                    }else if(stack.peek()=='(' && x!=')'){
+                        return false;
+                    }else if(stack.peek()=='[' && x!=']'){
+                        return false;
+                    }else if(stack.peek()=='{' && x!='}'){
+                        return false;
+                    }else{
+                        stack.pop();
+                    }       
+                }
+            }
+            return stack.isEmpty();
+        }
     }
-    return stack.isEmpty();
-}
-}
 }
